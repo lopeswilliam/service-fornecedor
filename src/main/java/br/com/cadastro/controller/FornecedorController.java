@@ -36,28 +36,28 @@ public class FornecedorController {
 
 	@ApiOperation(value = "Inclui Fornecedores")
 	@PostMapping(path = "/incluir" , produces = {"application/json"})
-	public ResponseEntity<Fornecedor> inclusao(@RequestBody FornecedorRequest fornecedoroRequest) {
+	public ResponseEntity<Fornecedor> inclusao(@RequestBody FornecedorRequest fornecedoroRequest, @RequestParam("token") String token) {
 		logger.info("Iniciando a Inclusao do fornecedorService");
 		return fornecedorService.inclusao(fornecedoroRequest );
 	}
 
 	@ApiOperation(value = "Mostra listar Fornecedores")
 	@GetMapping(path = "/listarFornecedores" , produces = {"application/json"})
-	public ResponseEntity<List<Fornecedor>> consultaFornecedores() {
+	public ResponseEntity<List<Fornecedor>> consultaFornecedores(@RequestParam("token") String token) {
 		logger.info("Iniciando a consulta do fornecedorService");
 		return fornecedorService.listarFornecedores();
 	}
 	
 	@ApiOperation(value = "Atualiza os Fornecedores")
 	@PutMapping(path = "/alterar" , produces = {"application/json"})
-	public ResponseEntity<Fornecedor> atualizar(@RequestBody FornecedorRequest depositoRequest) {
+	public ResponseEntity<Fornecedor> atualizar(@RequestBody FornecedorRequest depositoRequest, @RequestParam("token") String token) {
 		logger.info("Iniciando a Inclusao do fornecedorService");
 		return fornecedorService.atualizar(depositoRequest );
 	}
 	
 	@ApiOperation(value = "Consulta os Fornecedores")
 	@GetMapping(path = "/consultar" , produces = {"application/json"})
-	public ResponseEntity<List<Fornecedor>> consulta(@RequestParam("cnpj") String cnpj) {
+	public ResponseEntity<List<Fornecedor>> consulta(@RequestParam("cnpj") String cnpj, @RequestParam("token") String token) {
 		logger.info("Iniciando a consulta do fornecedorService");
 		return fornecedorService.consultar(cnpj);
 	}
